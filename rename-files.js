@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
-
+require('dotenv').config()
 // Replace this with the path to your folder containing the images
-const folderPath = path.join(__dirname, 'path/to/your/folder');
+const folderPath = path.join(__dirname, process.env.DIR_PATH);
 
 fs.readdir(folderPath, (err, files) => {
   if (err) {
