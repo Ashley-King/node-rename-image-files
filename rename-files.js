@@ -3,7 +3,7 @@ const path = require('path');
 require('dotenv').config()
 // Replace this with the path to your folder containing the images
 const folderPath = path.join(__dirname, process.env.DIR_PATH);
-
+const imageName = process.env.IMAGE_NAME;
 fs.readdir(folderPath, (err, files) => {
   if (err) {
     console.error('Error reading directory:', err);
@@ -11,9 +11,9 @@ fs.readdir(folderPath, (err, files) => {
   }
 
   files.forEach((file, index) => {
-    if (file.startsWith('Daryl_') && file.endsWith('.png')) {
+    if (file.startsWith(`${imageName}_`) && file.endsWith('.png')) {
       const oldPath = path.join(folderPath, file);
-      const newFileName = `${index + 1}Daryl.png`;
+      const newFileName = `${index + 1}${imageName}.png`;
       const newPath = path.join(folderPath, newFileName);
 
       fs.rename(oldPath, newPath, (err) => {
